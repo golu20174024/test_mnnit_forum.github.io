@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+
+<html>
+
+    
+    <head>
+        <title>Sign Up</title>
+    </head>
+    
+    <style>
+    
+        *{margin: 0; padding: 0;}
+        body{background:url(5.jpg);background-size:cover; font-family: sans-serif;}
+        
+        .form-wrap{ width: 320px; background: #3e3d3d; padding: 40px 20px; box-sizing: border-box; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+        h1{text-align: center; color: #fff; font-weight: normal; margin-bottom: 20px;}
+        
+        input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 15px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; color: #fff;}
+        
+        input[type="button"]{ background: #bac675; border: 0; cursor: pointer; color: #3e3d3d;}
+        input[type="button"]:hover{ background: #a4b15c; transition: .6s;}
+        
+        ::placeholder{color: #fff;}
+    
+    </style>
+
+    <body>
+    
+        <div class="form-wrap">
+        
+            <form action="signup.php" onsubmit="return validation()" method="POST">
+            
+                <h1>Sign Up</h1>
+                <span id="name" class="text-danger font-weight-bold"> </span>
+                <input type="text" placeholder="name" name="name" id="na" autocomplete="off">
+                <span id="username" class="text-danger font-weight-bold"> </span>
+                <input type="text" placeholder="Username" name="Username" id="user" autocomplete="off">
+                <span id="username" style="color:blue"> </span>
+                <input type="email" placeholder="Email" name="email" id="emails" autocomplete="off">
+                <span id="emailids" class="text-danger font-weight-bold"> </span>
+                <input type="passwords" placeholder="Password" name="password" id="pass" autocomplete="off>
+                <span id="passwords" class="text-danger font-weight-bold"> </span>
+                <input type="submit" value="Sign Up">
+            
+            </form>
+        
+        </div>
+
+        <script type="text/javascript">
+
+
+            function validation(){
+
+            var name=document.getElementById('na').value;
+            var user = document.getElementById('user').value;
+            var emails = document.getElementById('emails').value;
+            var pass = document.getElementById('pass').value;
+
+
+            if(name == ""){
+                document.getElementById('name').innerHTML =" ** Please fill the name field";
+                return false;
+            }
+            
+            if(!isNaN(name)){
+                document.getElementById('name').innerHTML =" ** only characters are allowed";
+                return false;
+            }
+
+
+
+            if(user == ""){
+                document.getElementById('username').innerHTML =" ** Please fill the username field";
+                return false;
+            }
+            if((user.length <= 2) || (user.length > 20)) {
+                document.getElementById('username').innerHTML =" ** Username lenght must be between 2 and 20";
+                return false;   
+            }
+            if(!isNaN(user)){
+                document.getElementById('username').innerHTML =" ** only characters are allowed";
+                return false;
+            }
+
+
+
+            if(emails == ""){
+                document.getElementById('emailids').innerHTML =" ** Please fill the email idx` field";
+                return false;
+            }
+            if(emails.indexOf('@') <= 0 ){
+                document.getElementById('emailids').innerHTML =" ** @ Invalid Position";
+                return false;
+            }
+
+            if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.')){
+                document.getElementById('emailids').innerHTML =" ** . Invalid Position";
+                return false;
+            }
+
+
+
+            if(pass == ""){
+                document.getElementById('passwords').innerHTML =" ** Please fill the password field";
+                return false;
+            }
+            if((pass.length <= 5) || (pass.length > 20)) {
+                document.getElementById('passwords').innerHTML =" ** Passwords lenght must be between  5 and 20";
+                return false;   
+            }
+
+        }
+        </script>
+    
+    
+    
+    </body>
+
+
+
+</html>
